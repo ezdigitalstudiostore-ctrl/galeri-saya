@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeri Saya</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    #galeri-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .gambar-saya {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .gambar-saya:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Galeri Saya</h1>
+  <input type="text" id="urlInput" placeholder="Masukkan URL gambar">
+  <button onclick="tambahGambar()">Tambah Gambar</button>
+  <div id="galeri-container"></div>
+
+  <script>
+    function tambahGambar() {
+      const pengguna = document.getElementById('urlInput').value;
+      if (pengguna.trim() === "") {
+        alert("Sila masukkan URL gambar.");
+        return;
+      }
+
+      const galeri = document.getElementById('galeri-container');
+      const img = document.createElement('img');
+      img.src = pengguna;
+      img.className = 'gambar-saya';
+      img.alt = "Gambar pengguna";
+      galeri.appendChild(img);
+
+      document.getElementById('urlInput').value = "";
+    }
+  </script>
+</body>
+</html>
