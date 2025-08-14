@@ -2,62 +2,102 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Galeri Saya</title>
   <style>
     body {
       font-family: sans-serif;
+      background: #f4f4f4;
       padding: 20px;
-      background-color: #f9f9f9;
+      text-align: center;
     }
-
-    input, button {
-      padding: 10px;
-      margin-right: 10px;
-      font-size: 16px;
+    h1 {
+      color: #333;
     }
-
-    #galeri-container {
+    input[type="file"] {
+      margin: 20px 0;
+    }
+    #gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
       margin-top: 20px;
     }
-
-    .gambar-saya {
+    img {
       width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-
-    .gambar-saya:hover {
-      transform: scale(1.05);
+    .image-box {
+      position: relative;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Galeri Saya</h1>
-  <input type="text" id="urlInput" placeholder="Masukkan URL gambar">
-  <button onclick="tambahGambar()">Tambah Gambar</button>
-  <div id="galeri-container"></div>
+  <h1>🎉 Galeri Saya</h1>
+  <input type="file" accept="image/*" onchange="previewImage(event)">
+  <div id="gallery"></div>
 
   <script>
-    function tambahGambar() {
-      const pengguna = document.getElementById('urlInput').value;
-      if (pengguna.trim() === "") {
-        alert("Sila masukkan URL gambar.");
-        return;
-      }
-
-      const galeri = document.getElementById('galeri-container');
-      const img = document.createElement('img');
-      img.src = pengguna;
-      img.className = 'gambar-saya';
-      img.alt = "Gambar pengguna";
-      galeri.appendChild(img);
-
-      document.getElementById('urlInput').value = "";
+    function previewImage(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const src = e.target.result;
+        addImageToGallery(src);
+        saveImage(src);
+      };
+      reader.readAsDataURL(file);
     }
+
+    function addImageToGallery(src) {
+      const box = document.createElement("div");
+      box.className = "image-box";
+
+      const img = document.createElement("img");
+      img.src = src;
+
+      const btn = document.createElement("button");
+      btn.className = "delete-btn";
+      btn.innerText = "×";
+      btn.onclick = function() {
+        box.remove();
+        deleteImage(src);
+      };
+
+      box.appendChild(img);
+      box.appendChild(btn);
+      document.getElementById("gallery").appendChild(box);
+    }
+
+    function saveImage(src) {
+      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
+      images.push(src);
+      localStorage.setItem("myGallery", JSON.stringify(images));
+    }
+
+    function deleteImage(src) {
+      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
+      images = images.filter(img => img !== src);
+      localStorage.setItem("myGallery", JSON.stringify(images));
+    }
+
+    window.onload = function() {
+      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
+      images.forEach(src => addImageToGallery(src));
+    };
   </script>
 </body>
 </html>
