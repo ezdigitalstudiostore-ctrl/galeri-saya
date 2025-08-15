@@ -1,175 +1,229 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Saya</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-        
-        .welcome-box {
-            background: rgba(255,255,255,0.95);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        .welcome-box h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-        
-        .welcome-box p {
-            color: #666;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .status {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .gallery-item {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.4s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .image-placeholder {
-            height: 220px;
-            background: linear-gradient(45deg, #f0f0f0, #e8e8e8);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .placeholder-text {
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-        
-        .gallery-item h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .gallery-item p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        
-        .footer {
-            margin-top: 50px;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .gallery { grid-template-columns: 1fr; gap: 20px; }
-            .container { padding: 10px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri Saya</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .welcome-box {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .welcome-box h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .welcome-box p {
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .status {
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 25px;
+      display: inline-block;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .upload-box {
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .upload-box input, .upload-box button {
+      margin: 5px;
+    }
+
+    .upload-box button {
+      padding: 10px 20px;
+      border: none;
+      background: #764ba2;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .upload-box button:hover {
+      background: #5a3d91;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .gallery-item {
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-item h3 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .gallery-item p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .gallery { grid-template-columns: 1fr; gap: 20px; }
+      .container { padding: 10px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🖼️ Galeri Saya</h1>
-        <p class="subtitle">Koleksi Foto & Karya Terbaik</p>
-        
-        <div class="welcome-box">
-            <h2>Selamat Datang! 👋</h2>
-            <p>Ini adalah galeri digital saya untuk menyimpan dan mempamerkan koleksi gambar, foto, dan karya seni terbaik.</p>
-            <p>Website ini dibangun menggunakan <strong>GitHub Pages</strong>!</p>
-            <div class="status">🚀 Website Siap!</div>
-        </div>
-        
-        <div class="gallery">
-            <div class="gallery-item">
-                <div class="image-placeholder">
-                    📷
-                    <div class="placeholder-text">Foto Pertama</div>
-                </div>
-                <h3>Koleksi Fotografi</h3>
-                <p>Tempat untuk foto-foto terbaik</p>
-            </div>
-            
-            <div class="gallery-item">
-                <div class="image-placeholder">
-                    🎨
-                    <div class="placeholder-text">Digital Art</div>
-                </div>
-                <h3>Karya Seni</h3>
-                <p>Artwork dan ilustrasi digital</p>
-            </div>
-            
-            <div class="gallery-item">
-                <div class="image-placeholder">
-                    📸
-                    <div class="placeholder-text">Portfolio</div>
-                </div>
-                <h3>Portfolio</h3>
-                <p>Kumpulan project kreatif</p>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>© 2025 Galeri Saya • GitHub Pages ❤️</p>
-        </div>
+  <div class="container">
+    <h1>🖼️ Galeri Saya</h1>
+    <p class="subtitle">Koleksi Foto & Karya Terbaik</p>
+
+    <div class="welcome-box">
+      <h2>Selamat Datang! 👋</h2>
+      <p>Ini adalah galeri digital saya untuk menyimpan dan mempamerkan koleksi gambar, foto, dan karya seni terbaik.</p>
+      <p>Website ini dibangun menggunakan <strong>GitHub Pages</strong>!</p>
+      <div class="status">🚀 Website Siap!</div>
     </div>
+
+    <div class="upload-box">
+      <input type="file" id="uploadInput" accept="image/*">
+      <input type="text" id="tagInput" placeholder="Tag / Kategori">
+      <button onclick="uploadImage()">📤 Upload Gambar</button>
+    </div>
+
+    <div class="gallery"></div>
+
+    <div class="footer">
+      <p>© 2025 Galeri Saya • GitHub Pages ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function uploadImage() {
+      const input = document.getElementById('uploadInput');
+      const tag = document.getElementById('tagInput').value || 'Tanpa Tag';
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imgData = e.target.result;
+        let gallery = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+        gallery.push({ src: imgData, tag: tag });
+        localStorage.setItem('galleryImages', JSON.stringify(gallery));
+        addImageToGallery(imgData, tag, gallery.length - 1);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function addImageToGallery(src, tag, index) {
+      const gallery = document.querySelector('.gallery');
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.innerHTML = `
+        <button class="delete-btn" onclick="deleteImage(${index})">×</button>
+        <img src="${src}" alt="Gambar Baru">
+        <h3>${tag}</h3>
+        <p>Upload dari telefon</p>
+      `;
+      gallery.appendChild(item);
+    }
+
+    function deleteImage(index) {
+      let gallery = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+      gallery.splice(index, 1);
+      localStorage.setItem('galleryImages', JSON.stringify(gallery));
+      location.reload();
+    }
+
+    window.onload = function() {
+      const saved = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+      saved.forEach((img, i) => addImageToGallery(img.src, img.tag, i));
+    };
+  </script>
 </body>
 </html>
