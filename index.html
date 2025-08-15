@@ -1,103 +1,249 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeri Saya</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      color: #333;
-    }
-    input[type="file"] {
-      margin: 20px 0;
-    }
-    #gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .image-box {
-      position: relative;
-    }
-    .delete-btn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Saya</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .welcome-box {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: slideUp 1s ease-out;
+        }
+        
+        .welcome-box h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .welcome-box p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .status {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item:nth-child(1) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.6s; }
+        
+        .image-placeholder {
+            height: 220px;
+            background: linear-gradient(45deg, #f0f0f0, #e8e8e8);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        .placeholder-text {
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .gallery-item h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .gallery-item p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .upload-info {
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            color: white;
+        }
+        
+        .upload-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .gallery { grid-template-columns: 1fr; gap: 20px; }
+            .container { padding: 10px; }
+            .welcome-box { padding: 25px; margin: 20px 10px; }
+        }
+    </style>
 </head>
 <body>
-  <h1>🎉 Galeri Saya</h1>
-  <input type="file" accept="image/*" onchange="previewImage(event)">
-  <div id="gallery"></div>
-
-  <script>
-    function previewImage(event) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const src = e.target.result;
-        addImageToGallery(src);
-        saveImage(src);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function addImageToGallery(src) {
-      const box = document.createElement("div");
-      box.className = "image-box";
-
-      const img = document.createElement("img");
-      img.src = src;
-
-      const btn = document.createElement("button");
-      btn.className = "delete-btn";
-      btn.innerText = "×";
-      btn.onclick = function() {
-        box.remove();
-        deleteImage(src);
-      };
-
-      box.appendChild(img);
-      box.appendChild(btn);
-      document.getElementById("gallery").appendChild(box);
-    }
-
-    function saveImage(src) {
-      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
-      images.push(src);
-      localStorage.setItem("myGallery", JSON.stringify(images));
-    }
-
-    function deleteImage(src) {
-      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
-      images = images.filter(img => img !== src);
-      localStorage.setItem("myGallery", JSON.stringify(images));
-    }
-
-    window.onload = function() {
-      let images = JSON.parse(localStorage.getItem("myGallery")) || [];
-      images.forEach(src => addImageToGallery(src));
-    };
-  </script>
+    <div class="container">
+        <h1>🖼️ Galeri Saya</h1>
+        <p class="subtitle">Koleksi Foto & Karya Terbaik</p>
+        
+        <div class="welcome-box">
+            <h2>Selamat Datang! 👋</h2>
+            <p>Ini adalah galeri digital saya untuk menyimpan dan mempamerkan koleksi gambar, foto, dan karya seni terbaik.</p>
+            <p>Website ini dibangun menggunakan <strong>GitHub Pages</strong> dan siap untuk menampilkan portfolio yang menakjubkan!</p>
+            <div class="status">🚀 Website Siap Digunakan!</div>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                    📷
+                    <div class="placeholder-text">Foto Pertama</div>
+                </div>
+                <h3>Koleksi Fotografi</h3>
+                <p>Tempat untuk menyimpan hasil jepretan terbaik dari berbagai momen dan lokasi menarik.</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                    🎨
+                    <div class="placeholder-text">Digital Art</div>
+                </div>
+                <h3>Karya Seni Digital</h3>
+                <p>Showcase untuk artwork, ilustrasi, dan kreasi digital yang telah dibuat dengan penuh dedikasi.</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                    📸
+                    <div class="placeholder-text">Portfolio</div>
+                </div>
+                <h3>Portfolio Kreatif</h3>
+                <p>Kumpulan project dan karya kreatif yang menunjukkan perkembangan skill dan kreativitas.</p>
+            </div>
+        </div>
+        
+        <div class="upload-info">
+            <h3>🔥 Coming Soon</h3>
+            <p>Fitur upload gambar dan gallery interaktif akan segera hadir!</p>
+            <p>Stay tuned untuk update selanjutnya...</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Galeri Saya • Powered by GitHub Pages ❤️</p>
+        </div>
+    </div>
 </body>
 </html>
