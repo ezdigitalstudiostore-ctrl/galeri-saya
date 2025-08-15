@@ -24,14 +24,12 @@
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeIn 1s ease-in;
         }
         
         .subtitle {
             color: rgba(255,255,255,0.9);
             font-size: 1.2rem;
             margin-bottom: 40px;
-            animation: fadeIn 1.5s ease-in;
         }
         
         .welcome-box {
@@ -40,7 +38,6 @@
             border-radius: 20px;
             margin-bottom: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            animation: slideUp 1s ease-out;
         }
         
         .welcome-box h2 {
@@ -79,17 +76,12 @@
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
         }
         
         .gallery-item:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-15px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        
-        .gallery-item:nth-child(1) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.6s; }
         
         .image-placeholder {
             height: 220px;
@@ -102,19 +94,6 @@
             color: #666;
             font-size: 3rem;
             margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shine 2s infinite;
         }
         
         .placeholder-text {
@@ -134,63 +113,16 @@
             line-height: 1.5;
         }
         
-        .upload-info {
-            background: rgba(255,255,255,0.1);
-            border: 2px dashed rgba(255,255,255,0.3);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-            color: white;
-        }
-        
-        .upload-info h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
         .footer {
             margin-top: 50px;
             color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .gallery { grid-template-columns: 1fr; gap: 20px; }
             .container { padding: 10px; }
-            .welcome-box { padding: 25px; margin: 20px 10px; }
         }
     </style>
 </head>
@@ -202,8 +134,8 @@
         <div class="welcome-box">
             <h2>Selamat Datang! 👋</h2>
             <p>Ini adalah galeri digital saya untuk menyimpan dan mempamerkan koleksi gambar, foto, dan karya seni terbaik.</p>
-            <p>Website ini dibangun menggunakan <strong>GitHub Pages</strong> dan siap untuk menampilkan portfolio yang menakjubkan!</p>
-            <div class="status">🚀 Website Siap Digunakan!</div>
+            <p>Website ini dibangun menggunakan <strong>GitHub Pages</strong>!</p>
+            <div class="status">🚀 Website Siap!</div>
         </div>
         
         <div class="gallery">
@@ -213,7 +145,7 @@
                     <div class="placeholder-text">Foto Pertama</div>
                 </div>
                 <h3>Koleksi Fotografi</h3>
-                <p>Tempat untuk menyimpan hasil jepretan terbaik dari berbagai momen dan lokasi menarik.</p>
+                <p>Tempat untuk foto-foto terbaik</p>
             </div>
             
             <div class="gallery-item">
@@ -221,8 +153,8 @@
                     🎨
                     <div class="placeholder-text">Digital Art</div>
                 </div>
-                <h3>Karya Seni Digital</h3>
-                <p>Showcase untuk artwork, ilustrasi, dan kreasi digital yang telah dibuat dengan penuh dedikasi.</p>
+                <h3>Karya Seni</h3>
+                <p>Artwork dan ilustrasi digital</p>
             </div>
             
             <div class="gallery-item">
@@ -230,19 +162,13 @@
                     📸
                     <div class="placeholder-text">Portfolio</div>
                 </div>
-                <h3>Portfolio Kreatif</h3>
-                <p>Kumpulan project dan karya kreatif yang menunjukkan perkembangan skill dan kreativitas.</p>
+                <h3>Portfolio</h3>
+                <p>Kumpulan project kreatif</p>
             </div>
         </div>
         
-        <div class="upload-info">
-            <h3>🔥 Coming Soon</h3>
-            <p>Fitur upload gambar dan gallery interaktif akan segera hadir!</p>
-            <p>Stay tuned untuk update selanjutnya...</p>
-        </div>
-        
         <div class="footer">
-            <p>© 2025 Galeri Saya • Powered by GitHub Pages ❤️</p>
+            <p>© 2025 Galeri Saya • GitHub Pages ❤️</p>
         </div>
     </div>
 </body>
